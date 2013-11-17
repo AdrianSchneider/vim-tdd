@@ -29,7 +29,7 @@ function! tdd#launch(file) "{{{
             let l:command_prefix = g:tdd_prerun_command . '; '
         endif
         if g:tdd_clear
-            l:command_prefix = l:command_prefix . 'clear; '
+            let l:command_prefix = l:command_prefix . 'clear; '
         endif
 
         if !empty(g:tdd_fail_command)
