@@ -3,7 +3,7 @@ let g:tdd_autorun = []
 " Launches tests for a file
 " Files configured to always run (tdd_autorun) are ran first
 " Optionally launches prerun command first, and optionally clears output
-function! tdd#launch(file) {{{
+function! tdd#Launch(file) {{{
     if g:tdd_test_command == ''
         return
     endif
