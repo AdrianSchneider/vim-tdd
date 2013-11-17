@@ -1,5 +1,3 @@
-echom "tdd is autoloading"
-"
 " Command to run tests with [command] [filename]
 let g:tdd_test_command = ''
 

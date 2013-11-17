@@ -1,4 +1,3 @@
-echom "autoloaded"
 let g:tdd_autorun = []
 
 " Launches tests for a file
@@ -52,7 +51,7 @@ endfunction "}}}
 " Default file mapper when nothing is configured
 " Warns user
 function! tdd#map_file_undefined(file) "{{{
-    echo "Not configured; let tdd_map_callback = 'YourFunction'"
+    echo "Not configured; let g:tdd_map_callback = 'YourFunction'"
 endfunction "}}}
 
 " Opens a split with the file on the right
