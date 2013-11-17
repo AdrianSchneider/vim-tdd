@@ -20,4 +20,4 @@ Basic PHP and Javascript support is included. Each language must configure `g:td
 `<leader>t-` empty auto-test list  
 
 # Documentation
-Run `:help tdd' to view more.
+Run `:help tdd` to view more.
