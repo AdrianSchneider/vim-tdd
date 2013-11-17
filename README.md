@@ -1,5 +1,5 @@
 # Overview
-This plugin aids test-driven development by allowing you to run tests in tmux panes without getting in the way. It also provides a framework for configuring your test workflow in your language of choice. This is by no means a full solution, but should provide a framework to create a workflow that fits your needs.
+This plugin aids test-driven development by allowing you to run tests in tmux panes without getting in the way. This is by no means a full solution, but should provide a framework to create a workflow that fits your needs.
 
 # Installation
 
