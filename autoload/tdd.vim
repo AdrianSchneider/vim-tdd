@@ -33,9 +33,9 @@ function! tdd#launch(file) "{{{
         endif
 
         if !empty(g:tdd_fail_command)
-            let l:run = l:command_prefix . g:tdd_test_command . join(l:runfiles, ' ') . ' || ' . g:tdd_fail_command
+            let l:run = l:command_prefix . g:tdd_test_command . ' ' . join(l:runfiles, ' ') . ' || ' . g:tdd_fail_command
         else
-            let l:run = l:command_prefix . g:tdd_test_command . join(l:runfiles, ' ')
+            let l:run = l:command_prefix . g:tdd_test_command . ' ' .  join(l:runfiles, ' ')
         endif
         call tdd#tmux_send(l:run)
     endif
