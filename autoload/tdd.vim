@@ -1,4 +1,3 @@
-echom "tdd is autoloaded"
 let g:tdd_autorun = []
 
 " Launches tests for a file
