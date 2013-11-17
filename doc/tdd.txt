@@ -1,4 +1,4 @@
-*vim.txt* Plugin for creating and launching tests for TDD
+*tdd.txt* Plugin for creating and launching tests for TDD
 
 Author: Adrian Schneider <http://adrianschneider.ca>
 License: Same terms as Vim itself (see |license|)
