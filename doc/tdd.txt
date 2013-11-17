@@ -46,6 +46,14 @@ g:tdd_tmux_target - set alternative tmux target to fire tests in
     defaults to '', currentwindow.1 is used by default
 
 
+To override the the config for the built in languages (PHP + Javascript), 
+you'll need to do it on buffer open rather than on bootup. Example:
+
+autocmd BufNewFile,BufRead *.php execute "let g:tdd_test_command = '/bin/tst'"
+autocmd BufNewFile,BufRead *.php execute "let g:tdd_map_callback = 'MapFunc'"
+
+
+
 TMUX HELP
                                                      *tdd-tmux*
 
