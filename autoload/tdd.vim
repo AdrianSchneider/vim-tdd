@@ -23,9 +23,8 @@ function! tdd#launch(file) "{{{
         endif
     endfor
 
-
     if len(l:runfiles)
-        let l:command_prefix = '';
+        let l:command_prefix = ''
         if g:tdd_prerun && !empty(g:tdd_prerun_command)
             let l:command_prefix = g:tdd_prerun_command . '; '
         endif
