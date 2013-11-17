@@ -115,7 +115,7 @@ function! tdd#tmux_send(cmd) "{{{
     let l:panes = tdd#tmux_count_panes()
     " TODO better error handling; this is assuming we're using .1
     if l:panes > 1 || strlen(g:tdd_tmux_target)
-        call system('tmux send-keys -t ' . tdd_tmux_get_target() . ' "' . a:cmd . '" Enter')
+        call system('tmux send-keys -t ' . tdd#tmux_get_target() . ' "' . a:cmd . '" Enter')
     endif
 endfunction "}}}
 
