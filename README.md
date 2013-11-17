@@ -23,9 +23,9 @@ Basic PHP and Javascript support is included. Each language must configure `g:td
 
 # Basic Usage
 
-`<leader>ts` opens test in split
-`<leader>tt` add current file to auto-test list
-`<leader>t-` empty auto-test list
+`<leader>ts` opens test in split  
+`<leader>tt` add current file to auto-test list  
+`<leader>t-` empty auto-test list  
 
 # Documentation
 Run `:help tdd` to view more.
