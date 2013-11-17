@@ -1,3 +1,7 @@
+" tdd.vim - TDD Helpers
+" Author: Adrian Schneider <http://adrianschneider.ca>
+" Version: 1.0
+
 " Command to run tests with [command] [filename]
 let g:tdd_test_command = ''
 
