@@ -14,7 +14,7 @@ let g:tdd_prerun_command = ''
 let g:tdd_fail_command = 'beep'
 
 " Sets the tmux pane to run tests in
-let g:tdd_tmux_target = '0:1.1'
+let g:tdd_tmux_target = '' " session:window.pane
 
 " Sets the file mapper (file or test file -> test file)
 let g:tdd_map_callback = 'tdd#map_file_undefined'
