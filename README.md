@@ -5,25 +5,19 @@ This plugin aids test-driven development by allowing you to run tests in tmux pa
 This plugin is pathogen and Vundle compatible.
 
 # Features
-- easily open (and create) test in split
-- add other related files to auto-test
-- use configured tmux pane, defaulting to best-guess
-
-# Configuration
-- tmux target
-- auto clear before testing?
-- pre-run command (ex: restart server)
-- fail command (defaults to beep)
+- run tests on save, show results in another pane
+- open (and create) test in split
+- add other related files to test list
+- auto detect tmux pane, or override with config
 
 # Language Configuration
-- test runner (ex: 'bin/phpunit')
-- file mapper (callback which converts filename to test filename)
+Basic PHP and Javascript support is included. Each language must configure `g:tdd_test_command`, and `g:tdd_map_callback`. See included ones as an example.
 
 # Basic Usage
 
-`<leader>ts` opens test in split
-`<leader>tt` add current file to auto-test list
-`<leader>t-` empty auto-test list
+`<leader>ts` opens test in split  
+`<leader>tt` add current file to auto-test list  
+`<leader>t-` empty auto-test list  
 
 # Documentation
-Run `:help tdd'
+Run `:help tdd' to view more.

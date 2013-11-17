@@ -44,3 +44,15 @@ g:tdd_pane - set default pane for tests
 
 g:tdd_tmux_target - set alternative tmux target to fire tests in
     defaults to '', currentwindow.1 is used by default
+
+
+TMUX HELP
+                                                     *tdd-tmux*
+
+By default, commands will run in the '1' pane in tmux. This works 
+out to the bottom pane, if you only have one split. You can override
+this by setting g:tdd_pane to something other than 1.
+
+Alternatively, you can specify the exact session/window/pane to use
+by calling tdd#tmux#set_pane("session:window.pane"), or configuring
+g:tdd_tmux_target. This will take priority over the pane method.
