@@ -13,7 +13,8 @@ panes.
 LANGUAGE SETUP                                       *tdd-setup*
 
 To get started, you'll need to configure your language with a test
-runner and a file mapper.
+runner and a file mapper. Basic config is pre-installed for
+PHP and Javascript (node.js).
 
 g:tdd_test_command should point to a test runner
 g:tdd_map_callback should name a function similar to the below:
@@ -37,6 +38,9 @@ g:tdd_prerun_command - arbitrary command to run before testing
 
 g:tdd_fail_commad - run when test exits with non-zero
     defaults to 'beep'
+
+g:tdd_pane - set default pane for tests
+    defaults to 1
 
 g:tdd_tmux_target - set alternative tmux target to fire tests in
     defaults to '', currentwindow.1 is used by default

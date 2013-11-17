@@ -4,7 +4,7 @@ let g:tdd_autorun = []
 " Files configured to always run (tdd_autorun) are ran first
 " Optionally launches prerun command first, and optionally clears output
 function! tdd#launch(file) "{{{
-    if g:tdd_test_command == ''
+    if g:tdd_test_command == '' || g:tdd_map_callback == ''
         return
     endif
 
@@ -36,7 +36,7 @@ function! tdd#launch(file) "{{{
         else
             let l:run = l:command_prefix . g:tdd_test_command . ' ' .  join(l:runfiles, ' ')
         endif
-        call tdd#tmux_send(l:run)
+        call tdd#tmux#send(l:run)
     endif
 endfunction "}}}
 
@@ -45,12 +45,6 @@ endfunction "}}}
 function! tdd#map_file(file) "{{{
     execute "let g:tdd_mapped = " . g:tdd_map_callback . "('" . a:file . "')"
     return g:tdd_mapped
-endfunction "}}}
-
-" Default file mapper when nothing is configured
-" Warns user
-function! tdd#map_file_undefined(file) "{{{
-    echo "Not configured; let g:tdd_map_callback = 'YourFunction'"
 endfunction "}}}
 
 " Opens a split with the file on the right
@@ -93,12 +87,6 @@ function! tdd#autotest_toggle(file) "{{{
     endif
 endfunction "}}}
 
-" Sets the tmux target pane
-" Tmux expects 'session:window.panel'
-function! tdd#tmux_set_target(target) "{{{
-    let g:tdd_tmux_target = a:target
-endfunction "}}}
-
 " Toggles auto-restarting before running tests
 function! tdd#toggle_prerun() "{{{
     let g:tdd_prerun = !g:tdd_prerun
@@ -109,30 +97,3 @@ function! tdd#autotest_empty() "{{{
     let g:tdd_autorun = []
 endfunction "}}}
 
-" Sends a command over Tmux
-function! tdd#tmux_send(cmd) "{{{
-    let l:panes = tdd#tmux_count_panes()
-    " TODO better error handling; this is assuming we're using .1
-    if l:panes > 1 || strlen(g:tdd_tmux_target)
-        call system('tmux send-keys -t ' . tdd#tmux_get_target() . ' "' . a:cmd . '" Enter')
-    endif
-endfunction "}}}
-
-" Counts the number of panes in Tmux
-function! tdd#tmux_count_panes() "{{{
-    return len(split(system('tmux list-panes'), "\n"))
-endfunction "}}}
-
-" Gets the tmux target to use
-" Attempts to fallback on current window's second (bottom, typically) pane
-function! tdd#tmux_get_target() "{{{
-    if strlen(g:tdd_tmux_target)
-        return g:tdd_tmux_target
-    endif
-    let l:windows = split(system('tmux list-windows'), "\n")
-    for windowinfo in l:windows
-        if windowinfo =~ ".*active.*"
-            return "0:" . windowinfo[0] . ".1"
-        endif
-    endfor
-endfunction "}}}

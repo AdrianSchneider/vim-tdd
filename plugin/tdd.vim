@@ -13,11 +13,14 @@ let g:tdd_prerun_command = ''
 " Sets command to run on failure
 let g:tdd_fail_command = 'beep'
 
-" Sets the tmux pane to run tests in
+" Sets the default pane to use for testing
+let g:tdd_tmux_pane = 1
+
+" Or, explicitly specify target overriding above
 let g:tdd_tmux_target = '' " session:window.pane
 
 " Sets the file mapper (file or test file -> test file)
-let g:tdd_map_callback = 'tdd#map_file_undefined'
+let g:tdd_map_callback = ''
 
 " Open test in split
 nmap <leader>ts :call tdd#open_split(tdd#map_file(expand('%:.')))<cr>
