@@ -24,3 +24,6 @@ This plugin is pathogen and Vundle compatible.
 `<leader>ts` opens test in split
 `<leader>tt` add current file to auto-test list
 `<leader>t-` empty auto-test list
+
+# Documentation
+Run `:help tdd'

@@ -1,0 +1,42 @@
+*vim.txt* Plugin for creating and launching tests for TDD
+
+Author: Adrian Schneider <http://adrianschneider.ca>
+License: Same terms as Vim itself (see |license|)
+
+INTRODUCTION                                             *tdd*
+
+This plugin provides a framework for creating and launching tests for
+a tight feedback loop. It uses tmux to send test commands to other
+panes.
+
+
+LANGUAGE SETUP                                       *tdd-setup*
+
+To get started, you'll need to configure your language with a test
+runner and a file mapper.
+
+g:tdd_test_command should point to a test runner
+g:tdd_map_callback should name a function similar to the below:
+
+function! YourCallback(file)
+    return "/path/to/test/for/a:file"
+endfunction
+
+
+
+CONFIGURATION                                       *tdd-config*
+
+g:tdd_clear - 1|0, enable clearing screen before test
+    defaults to 1
+
+g:tdd_prerun - 1|0, enable pre-run commands
+    defaults to 0
+
+g:tdd_prerun_command - arbitrary command to run before testing
+    useful for restarting servers or other cleanup
+
+g:tdd_fail_commad - run when test exits with non-zero
+    defaults to 'beep'
+
+g:tdd_tmux_target - set alternative tmux target to fire tests in
+    defaults to '', currentwindow.1 is used by default
