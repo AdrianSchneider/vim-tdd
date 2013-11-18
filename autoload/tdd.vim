@@ -3,6 +3,7 @@ let g:tdd_autorun = []
 " Launches tests for a file
 " Files configured to always run (tdd_autorun) are ran first
 " Optionally launches prerun command first, and optionally clears output
+" TODO map inside here?
 function! tdd#launch(file) "{{{
     if g:tdd_test_command == '' || g:tdd_map_callback == ''
         return
@@ -38,6 +39,32 @@ function! tdd#launch(file) "{{{
         endif
         call tdd#tmux#send(l:run)
     endif
+endfunction "}}}
+
+" Test a single file directly in vim
+" TODO refactor command building into priv method
+function! tdd#inline(file) "{{{
+    if g:tdd_test_command == ''
+        echom "No test command defined"
+        return
+    endif
+    if g:tdd_map_callback == ''
+        echom "No mapping function defined"
+        return
+    endif
+
+    let l:command_prefix = ''
+    if g:tdd_prerun && !empty(g:tdd_prerun_command)
+        let l:command_prefix = g:tdd_prerun_command . '; '
+    endif
+    if g:tdd_clear
+        let l:command_prefix = l:command_prefix . 'clear; '
+    endif
+
+    let l:file = tdd#map_file(a:file)
+    let l:run = l:command_prefix . g:tdd_test_command . ' ' . l:file
+
+    execute "!" . l:run
 endfunction "}}}
 
 " Finds the test file for a given file

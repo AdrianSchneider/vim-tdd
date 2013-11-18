@@ -35,4 +35,7 @@ nmap <leader>tt :call tdd#autotest_toggle(expand('%:.'))<cr>
 " Empty auto-test list of files
 nmap <leader>t- :call tdd#autotest_empty()<cr>
 
+" Run test inside vim
+nmap <leader>ti :call tdd#inline(tdd#map_file(expand('%:.')))<cr>
+
 autocmd BufWritePost * execute "call tdd#launch(tdd#map_file(expand('%s:.')))"

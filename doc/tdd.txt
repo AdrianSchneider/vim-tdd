@@ -53,6 +53,17 @@ autocmd BufNewFile,BufRead *.php execute "let g:tdd_test_command = '/bin/tst'"
 autocmd BufNewFile,BufRead *.php execute "let g:tdd_map_callback = 'MapFunc'"
 
 
+RUNNING TESTS                                        *tdd-tests*
+
+If the language is configured properly, and a valid tmux target
+is available, tests will run automatically in the configured
+tmux target without interrupting your work.
+
+You can also run tests directly inside vim if you have limited
+screen space.
+
+<leader>ti will launch tests for the current file in vim
+
 
 TMUX HELP
                                                      *tdd-tmux*

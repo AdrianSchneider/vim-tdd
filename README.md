@@ -13,10 +13,11 @@ Vundle:
     Bundle 'AdrianSchneider/vim-tdd'
 
 # Features
-- run tests on save, show results in another pane
+- run tests synchronously in vim, or asynchronously through tmux
+- run tests manually or automatically on save
 - open (and create) test in split
 - add other related files to test list
-- auto detect tmux pane, or override with config
+- auto detect bottom tmux pane, or override with config
 
 # Language Configuration
 Basic PHP and Javascript support is included. Each language must configure `g:tdd_test_command`, and `g:tdd_map_callback`. See included ones as an example.
@@ -26,6 +27,7 @@ Basic PHP and Javascript support is included. Each language must configure `g:td
 `<leader>ts` opens test in split  
 `<leader>tt` add current file to auto-test list  
 `<leader>t-` empty auto-test list  
+`<leader>ti` test file directly in vim
 
 # Documentation
 Run `:help tdd` to view more.
