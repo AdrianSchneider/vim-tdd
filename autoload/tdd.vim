@@ -3,13 +3,12 @@ let g:tdd_autorun = []
 " Launches tests for a file
 " Files configured to always run (tdd_autorun) are ran first
 " Optionally launches prerun command first, and optionally clears output
-" TODO map inside here?
 function! tdd#launch(file) "{{{
     if g:tdd_test_command == '' || g:tdd_map_callback == ''
         return
     endif
 
-    let l:testpath = a:file
+    let l:testpath = tdd#map_file(a:file)
     let l:testfiles = [l:testpath]
     let l:runfiles = []
 
@@ -42,7 +41,6 @@ function! tdd#launch(file) "{{{
 endfunction "}}}
 
 " Test a single file directly in vim
-" TODO refactor command building into priv method
 function! tdd#inline(file) "{{{
     if g:tdd_test_command == ''
         echom "No test command defined"
@@ -64,7 +62,9 @@ function! tdd#inline(file) "{{{
     let l:file = tdd#map_file(a:file)
     let l:run = l:command_prefix . g:tdd_test_command . ' ' . l:file
 
-    execute "!" . l:run
+    if filereadable(l:file)
+        execute "!" . l:run
+    endif
 endfunction "}}}
 
 " Finds the test file for a given file
@@ -77,15 +77,16 @@ endfunction "}}}
 " Opens a split with the file on the right
 " If file does not exist, file and parent directories are automatically created
 function! tdd#open_split(file) "{{{
-    if filereadable(a:file)
-        execute ':vs ' . a:file
+    let l:file = tdd#map_file(a:file)
+    if filereadable(l:file)
+        execute ':vs ' . l:file
         return
     endif
 
-    let l:dir = system('dirname ' . a:file)
+    let l:dir = system('dirname ' . l:file)
     call system('mkdir -p ' . l:dir)
-    call system('touch ' . a:file)
-    execute ':vs ' . a:file
+    call system('touch ' . l:file)
+    execute ':vs ' . l:file
 endfunction "}}}
 
 " Enables auto-testing for given file

@@ -30,4 +30,4 @@ Basic PHP and Javascript support is included. Each language must configure `g:td
 `<leader>ti` test file directly in vim
 
 # Documentation
-Run `:help tdd` to view more.
+Run `:help tdd` to see more advanced usage and configuration options.

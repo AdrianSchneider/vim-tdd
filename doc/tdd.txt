@@ -10,6 +10,7 @@ a tight feedback loop. It uses tmux to send test commands to other
 panes.
 
 
+
 LANGUAGE SETUP                                       *tdd-setup*
 
 To get started, you'll need to configure your language with a test
@@ -20,8 +21,38 @@ g:tdd_test_command should point to a test runner
 g:tdd_map_callback should name a function similar to the below:
 
 function! YourCallback(file)
-    return "/path/to/test/for/a:file"
+    return "/path/to/test/for/a/file"
 endfunction
+
+
+
+USAGE                                               *tdd-usage*
+
+This plugin defines several commands:
+
+:TddTest - this is called automatically on save. If no test file
+    is found, then nothing happens. If one is found, it attempts
+    to run the test through the cconfigured tmux target.
+
+:TddSplit - this loads the test for the current file in a split.
+    If no file exists, the file along with its parent directories
+    are automatically created.
+    Mapped to <leader>ts by default
+
+:TddInline - this runs a test manually in vim as a system call
+    Mapped to <leader>ti by default
+
+
+:TddTarget - set the tmux pane to run tests in
+
+:TddToggle - enable or disable automatic testing for this file
+    even if you are editing other files
+    Mapped to <leader>tt by default
+
+:TddEmpty - remove all files for automatic testing
+    Mapped to <leader>t- by default
+
+Key mappings can be disabled by setting g:tdd_skip_mappings to 1
 
 
 
@@ -43,7 +74,11 @@ g:tdd_pane - set default pane for tests
     defaults to 1
 
 g:tdd_tmux_target - set alternative tmux target to fire tests in
-    defaults to '', currentwindow.1 is used by default
+    defaults to '', currentwindow.1 is used by when empty
+
+g:tdd_skip_mappings - set to 1 to disable mapping configuration
+
+g:tdd_skip_onsave - set to 1 to prevent testing on save
 
 
 To override the the config for the built in languages (PHP + Javascript), 
@@ -53,6 +88,7 @@ autocmd BufNewFile,BufRead *.php execute "let g:tdd_test_command = '/bin/tst'"
 autocmd BufNewFile,BufRead *.php execute "let g:tdd_map_callback = 'MapFunc'"
 
 
+
 RUNNING TESTS                                        *tdd-tests*
 
 If the language is configured properly, and a valid tmux target
@@ -60,9 +96,8 @@ is available, tests will run automatically in the configured
 tmux target without interrupting your work.
 
 You can also run tests directly inside vim if you have limited
-screen space.
+screen space via the :TddInline command.
 
-<leader>ti will launch tests for the current file in vim
 
 
 TMUX HELP

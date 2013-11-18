@@ -1,8 +1,12 @@
 " dir for tests
-let g:tdd_js_dir = 'test'
+if empty(g:tdd_js_dir)
+    let g:tdd_js_dir = 'tests'
+endif
 
 " patterns to match testable files
-let g:tdd_js_patterns = ['^test']
+if empty(g:tdd_js_patterns)
+    let g:tdd_js_patterns = ['^tests']
+endif
 
 " Basic mapper for javascript
 " lib/to/filename.js to test/path/to/filename.js
