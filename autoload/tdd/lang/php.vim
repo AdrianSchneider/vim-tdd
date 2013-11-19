@@ -1,4 +1,4 @@
-if empty(g:tdd_php_testdir)
+if !exists("g:tdd_php_testdir")
     let g:tdd_php_testdir = 'tests'
 endif
 
