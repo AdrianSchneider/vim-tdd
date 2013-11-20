@@ -1,10 +1,10 @@
 " dir for tests
-if empty(g:tdd_js_dir)
+if !exists("g:tdd_js_dir")
     let g:tdd_js_dir = 'tests'
 endif
 
 " patterns to match testable files
-if empty(g:tdd_js_patterns)
+if !exists("g:tdd_js_patterns")
     let g:tdd_js_patterns = ['^tests']
 endif
 
