@@ -62,6 +62,7 @@ function! tdd#inline(file) "{{{
     let l:file = tdd#map_file(a:file)
     let l:run = l:command_prefix . g:tdd_test_command . ' ' . l:file
 
+    echom l:file
     if filereadable(l:file)
         execute "!" . l:run
     endif

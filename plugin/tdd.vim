@@ -7,6 +7,7 @@ if !exists("g:tdd_skip_mappings")
     nmap <leader>ts :TddSplit<cr>
     nmap <leader>tt :TddToggle<cr>
     nmap <leader>t- :TddEmpty<cr>
+    nmap K :Cancel<CR>
 endif
 
 if !exists("g:tdd_skip_onsave")
@@ -20,6 +21,8 @@ command! -nargs=0 TddInline call tdd#inline(expand('%:.'))
 command! -nargs=1 TddTarget call tdd#tmux#set_target(<f-args>)
 command! -nargs=0 TddToggle call tdd#autotest_toggle(expand('%:.'))
 command! -nargs=0 TddEmpty  call tdd#autotest_empty()
+command! -nargs=1 Run       call tdd#tmux#send(<f-args>)
+command! -nargs=0 Cancel    call tdd#tmux#send('^C')
 
 " Command to run tests with [command] [filename]
 if !exists("g:tdd_test_command")
